@@ -1,0 +1,15 @@
+<html>
+  <head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+  </head>
+  <body>
+    <div class="container">
+      ${articles.map(article => `
+        <h1><a href="${mapUrl(article.article.value)}">${article.title.value || article.rssTitle.value}</a></h1>
+        <a class="btn btn-secondary" href="${mapUrl(article.channel.value)}">${article.channel.value.split('/').filter(Boolean).slice(-1)[0]}</a>
+        <h6>${(new Date(article.rssDate.value)).toLocaleString()}</h6>
+        <p>${article.abstract.value}</p>
+      `).join('')}
+    </div>
+  </body>
+</html>
